@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TechConference</title>
+</head>
+<body>
+<h1>Propostas de Palestras</h1>
+
+<a th:href="@{/propostas/nova}">Nova Proposta</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th><th>Titulo</th><th>Palestrante</th><th>Categoria</th>
+        <th>Nivel</th><th>Status</th><th>Acoes</th>
+    </tr>
+    </thead>
+    <tbody>
+        <!--cada objeto em propostas-->
+        <tr th:each="proposta : ${propostas}">
+            <!--pegando o conteudo-->
+            <td th:text="${proposta.id}"></td>
+
+            <td th:text="${proposta.titulo}"></td>
+
+            <td th:text="${proposta.palestrante}"></td>
+
+            <td th:text="${proposta.categoria}"></td>
+
+            <td th:text="${proposta.nivel}"></td>
+
+            <td th:text="${proposta.status}"></td>
+
+            <td>
+                <a th:href="@{/propostas/{id}(id=${proposta.id})}">
+                    Detalhes
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

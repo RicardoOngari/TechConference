@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Proposta</title>
+</head>
+<body>
+<h1>Submeter Palestra</h1>
+
+<!-- th:action="@{/propostas}" Diz onde o formulario sera enviado.
+th:object="${proposta}" Este formulário trabalha com o objeto proposta. -->
+<form th:action="@{/propostas}" th:object="${proposta}" method="post">
+
+    <label>Titulo:</label>
+    <!-- th:field="*{}" é o atributo do objeto proposta -->
+    <input type="text" th:field="*{titulo}">
+    <!-- Se o campo titulo tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('titulo')}"
+          th:errors="*{titulo}">
+    </span>
+    <br>
+
+
+    <label>Descrição:</label>
+    <!-- th:field="*{}" é o atributo do objeto proposta -->
+    <input type="text" th:field="*{descricao}">
+    <!-- Se o campo descricao tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('descricao')}"
+          th:errors="*{descricao}">
+    </span>
+    <br>
+
+    <label>Palestrante:</label>
+    <!-- th:field="*{}" é o atributo do objeto proposta -->
+    <input type="text" th:field="*{palestrante}">
+    <!-- Se o campo palestrante tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('palestrante')}"
+          th:errors="*{palestrante}">
+    </span>
+    <br>
+
+    <label>Email Palestrante:</label>
+    <!-- th:field="*{}" é o atributo do objeto proposta -->
+    <input type="email" th:field="*{emailPalestrante}">
+    <!-- Se o campo Email tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('emailPalestrante')}"
+          th:errors="*{emailPalestrante}">
+    </span>
+    <br>
+
+    <label>Categoria:</label>
+    <!-- th:field="*{}" é o atributo do objeto proposta -->
+    <select th:field="*{categoria}">
+        <!-- Aqui estamos pegando nosso enum categoria para fazer a escolha la no formulario -->
+        <option value="">Selecione a categoria</option>
+
+        <option th:each="categoria : ${categorias}"
+                th:value="${categoria}"
+                th:text="${categoria}">
+        </option>
+    </select>
+    <!-- Se o campo Categoria tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('categoria')}"
+          th:errors="*{categoria}">
+    </span>
+    <br>
+
+    <label>Duração:</label>
+    <!-- th:field="*{}" é o atributo do objeto proposta -->
+    <input type="number" th:field="*{duracaoMinutos}">
+    <!-- Se o campo Duracao tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('duracaoMinutos')}"
+          th:errors="*{duracaoMinutos}">
+    </span>
+    <br>
+
+    <label>Nivel:</label>
+    <!-- th:field="*{}" é o atributo do objeto proposta -->
+    <select th:field="*{nivel}">
+        <!-- Aqui estamos pegando nosso enum categoria para fazer a escolha la no formulario -->
+        <option value="">Selecione o nivel</option>
+
+        <option th:each="nivel : ${niveis}"
+                th:value="${nivel}"
+                th:text="${nivel}">
+        </option>
+    </select>
+    <!-- Se o campo Nivel tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('nivel')}"
+          th:errors="*{nivel}">
+    </span>
+    <br>
+
+    <button type="submit">Salvar</button>
+
+</form>
+
+</body>
+</html>

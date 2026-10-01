@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da Proposta</title>
+</head>
+<body>
+<h1>Detalhes da Proposta</h1>
+
+<p>
+    <strong>ID:</strong>
+    <!--pegando o conteudo-->
+    <span th:text="${proposta.id}"></span>
+</p>
+<br>
+<p>
+    <strong>Titulo:</strong>
+    <!--pegando o conteudo-->
+    <span th:text="${proposta.titulo}"></span>
+</p>
+<br>
+<p>
+    <strong>Descrição:</strong>
+    <!--pegando o conteudo-->
+    <span th:text="${proposta.descricao}"></span>
+</p>
+<br>
+<p>
+    <strong>Palestrante:</strong>
+    <!--pegando o conteudo-->
+    <span th:text="${proposta.palestrante}"></span>
+</p>
+<br>
+<p>
+    <strong>Email do Palestrante:</strong>
+    <!--pegando o conteudo-->
+    <span th:text="${proposta.emailPalestrante}"></span>
+</p>
+<br>
+<p>
+    <strong>Categoria:</strong>
+    <!--pegando o conteudo-->
+    <span th:text="${proposta.categoria}"></span>
+</p>
+<br>
+<p>
+    <strong>Duração:</strong>
+    <!--pegando o conteudo-->
+    <span th:text="${proposta.duracaoMinutos}"></span>
+</p>
+<br>
+<p>
+    <strong>Nivel:</strong>
+    <!--pegando o conteudo-->
+    <span th:text="${proposta.nivel}"></span>
+</p>
+<br>
+<p>
+    <strong>Status:</strong>
+    <!--pegando o conteudo-->
+    <span th:text="${proposta.status}"></span>
+</p>
+<br>
+
+<!--nossos botoes alterando o status-->
+<form th:action="@{/propostas/{id}/aprovar(id=${proposta.id})}" method="post">
+    <button type="submit">Aprovar</button>
+</form>
+
+<form th:action="@{/propostas/{id}/rejeitar(id=${proposta.id})}" method="post">
+    <button type="submit">Rejeitar</button>
+</form>
+
+<a th:href="@{/propostas}">Voltar</a>
+</body>
+</html>
